@@ -4,13 +4,16 @@ $uri  = $_SERVER['REQUEST_URI'] ?? '/';
 $path = parse_url($uri, PHP_URL_PATH);
 $path = ltrim($path, '/');
 
-// remove query string already handled by parse_url
+// Filter out vercel internal /api/index.php self-reference (avoid infinite loop)
+if ($path === 'api/index.php' || $path === 'api/index') {
+    $path = 'index.php';
+}
 if ($path === '') {
     $path = 'index.php';
 }
 
-// Static assets: let Vercel serve, but if we reach here, serve them manually
-$staticExtensions = ['css','js','png','jpg','jpeg','gif','svg','ico','woff','woff2','ttf','eot'];
+// Static assets: serve manually if we reach here
+$staticExtensions = ['css','js','png','jpg','jpeg','gif','svg','ico','woff','woff2','ttf','eot','map'];
 $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 $rootFile = __DIR__ . '/../' . $path;
 
@@ -31,29 +34,34 @@ $target = __DIR__ . '/../' . $path;
 // If path is a directory, try index.php inside it
 if (is_dir($target)) {
     $target = rtrim($target, '/') . '/index.php';
+    $path = rtrim($path, '/') . '/index.php';
 }
 
 // If no extension, try adding .php
-if (!file_exists($target) && !str_contains($path, '.')) {
+if (!file_exists($target) && strpos($path, '.') === false) {
     if (file_exists($target . '.php')) {
         $target = $target . '.php';
+        $path = $path . '.php';
     }
 }
 
 // If file exists and is PHP, include it
 if (file_exists($target) && is_file($target) && substr($target, -4) === '.php') {
-    // Change working directory so relative includes (config/database.php, etc.) resolve correctly
+    // Prevent self-include
+    if (realpath($target) === realpath(__FILE__)) {
+        $target = __DIR__ . '/../index.php';
+        $path = 'index.php';
+    }
     chdir(dirname($target));
-    // Make sure the included file sees the correct SCRIPT_NAME / PHP_SELF
     $_SERVER['SCRIPT_NAME'] = '/' . $path;
     $_SERVER['SCRIPT_FILENAME'] = $target;
+    $_SERVER['PHP_SELF'] = '/' . $path;
     require $target;
     exit;
 }
 
 // Fallback: file not found
 if (file_exists($rootFile) && is_file($rootFile)) {
-    // Serve as static
     readfile($rootFile);
     exit;
 }
