@@ -1,0 +1,674 @@
+/**
+ * File: assets/css/style.css
+ * Deskripsi: Custom CSS untuk seluruh aplikasi
+ */
+
+/* =============================================
+   GLOBAL
+   ============================================= */
+:root {
+    --primary-color   : #0d6efd;
+    --secondary-color : #6c757d;
+    --success-color   : #198754;
+    --danger-color    : #dc3545;
+    --warning-color   : #ffc107;
+    --dark-navy       : #1a3a6c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family     : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+.navbar-brand {
+    font-weight: bold;
+    font-size  : 1.3rem;
+}
+
+/* =============================================
+   CARD GLOBAL
+   ============================================= */
+.card {
+    border-radius: 10px;
+    box-shadow   : 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    font-weight  : 600;
+}
+
+/* =============================================
+   STATS CARD
+   ============================================= */
+.stats-card {
+    transition   : transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow     : hidden;
+}
+
+.stats-card:hover {
+    transform : translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.stats-card .card-body {
+    padding: 1.3rem 1.5rem;
+}
+
+.stats-card .icon-wrap {
+    font-size: 2.4rem;
+    opacity  : 0.75;
+}
+
+.stats-card h3 {
+    font-size  : 1.9rem;
+    font-weight: 700;
+    margin     : 5px 0 0;
+}
+
+.stats-card .sub-text {
+    font-size: 0.78rem;
+    opacity  : 0.85;
+}
+
+/* =============================================
+   TABLE
+   ============================================= */
+.table {
+    background: white;
+}
+
+.table thead {
+    background-color: var(--primary-color);
+    color           : white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+    border-radius: 5px;
+    padding      : 8px 20px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color    : var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color    : #0b5ed7;
+}
+
+/* =============================================
+   AUTH PAGE (LOGIN / REGISTER)
+   ============================================= */
+.auth-wrapper {
+    min-height     : 100vh;
+    display        : flex;
+    align-items    : center;
+    background     : linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.auth-card {
+    border-radius: 15px;
+    box-shadow   : 0 10px 40px rgba(0,0,0,0.3);
+    overflow     : hidden;
+}
+
+.auth-card .card-body {
+    padding: 2.5rem;
+}
+
+/* =============================================
+   ALERT
+   ============================================= */
+.alert {
+    border-radius: 8px;
+    border       : none;
+}
+
+/* =============================================
+   BADGE
+   ============================================= */
+.badge {
+    padding  : 5px 10px;
+    font-size: 0.85rem;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+    margin-top: auto;
+}
+
+/* =============================================
+   LOADING SPINNER
+   ============================================= */
+.spinner-overlay {
+    position       : fixed;
+    top            : 0;
+    left           : 0;
+    width          : 100%;
+    height         : 100%;
+    background     : rgba(0,0,0,0.5);
+    display        : none;
+    justify-content: center;
+    align-items    : center;
+    z-index        : 9999;
+}
+
+.spinner-overlay.active {
+    display: flex;
+}
+
+/* =============================================
+   CUSTOM SCROLLBAR
+   ============================================= */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background     : #888;
+    border-radius  : 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* =============================================
+   DASHBOARD USER
+   ============================================= */
+
+/* Badge jatuh tempo */
+.badge-jatuh { font-size: 0.72rem; }
+
+/* Card section */
+.card-section .card-header {
+    font-weight: 600;
+    font-size  : 0.95rem;
+}
+
+/* Notifikasi hampir jatuh tempo */
+.notif-bar {
+    border-radius: 8px;
+    padding      : 10px 15px;
+    font-size    : 0.88rem;
+    font-weight  : 500;
+}
+
+/* Riwayat list */
+.riwayat-item {
+    border-left  : 4px solid #198754;
+    padding-left : 12px;
+    margin-bottom: 10px;
+}
+
+.riwayat-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Action buttons */
+.btn-action {
+    font-size   : 0.75rem;
+    padding     : 4px 10px;
+    white-space : nowrap;
+}
+
+/* =============================================
+   HALAMAN TAGIHAN USER
+   ============================================= */
+
+/* Filter badge */
+.filter-badge {
+    cursor    : pointer;
+    transition: transform 0.2s;
+}
+
+.filter-badge:hover {
+    transform: scale(1.05);
+}
+
+/* Action buttons tagihan */
+.btn-aksi {
+    font-size    : 0.75rem;
+    padding      : 4px 10px;
+    display      : block;
+    width        : 100%;
+    margin-bottom: 4px;
+    white-space  : nowrap;
+}
+
+.btn-aksi:last-child {
+    margin-bottom: 0;
+}
+
+/* Badge jatuh tempo tagihan */
+.badge-jtempo { font-size: 0.7rem; }
+
+/* Highlight row tagihan */
+.row-urgent     { background-color: #fff5f5; }
+.row-warning-bg { background-color: #fffbf0; }
+
+/* Info cetak tagihan */
+.info-cetak {
+    background   : #fff8e1;
+    border       : 1px solid #ffc107;
+    border-radius: 8px;
+    padding      : 12px 15px;
+    font-size    : 0.85rem;
+}
+
+/* =============================================
+   CETAK TAGIHAN - DOKUMEN
+   ============================================= */
+
+/* Wrapper tombol aksi */
+.btn-wrapper {
+    max-width      : 900px;
+    margin         : 20px auto 10px;
+    display        : flex;
+    gap            : 10px;
+    justify-content: center;
+}
+
+/* Dokumen utama */
+.dokumen {
+    max-width : 900px;
+    margin    : 0 auto 40px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* Header dokumen */
+.doc-header {
+    background: linear-gradient(135deg, #1a3a6c 0%, #0d6efd 100%);
+    color     : white;
+    padding   : 20px 30px;
+}
+
+.doc-header .logo-area {
+    display    : flex;
+    align-items: center;
+    gap        : 15px;
+}
+
+.doc-header .logo-box {
+    width          : 70px;
+    height         : 70px;
+    background     : white;
+    border-radius  : 50%;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    flex-shrink    : 0;
+}
+
+.doc-header .logo-box img {
+    width      : 55px;
+    height     : 55px;
+    object-fit : contain;
+}
+
+.doc-header .logo-box i {
+    font-size: 2.5rem;
+    color    : #1a3a6c;
+}
+
+.doc-header .instansi h3 {
+    margin       : 0;
+    font-size    : 1.1rem;
+    font-weight  : 700;
+    letter-spacing: 0.5px;
+}
+
+.doc-header .instansi p {
+    margin   : 2px 0 0;
+    font-size: 0.8rem;
+    opacity  : 0.85;
+}
+
+.doc-header .doc-info {
+    text-align: right;
+}
+
+.doc-header .doc-info .doc-title {
+    font-size     : 1.2rem;
+    font-weight   : 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.doc-header .doc-info .doc-no {
+    font-size: 0.85rem;
+    opacity  : 0.85;
+}
+
+/* Status banner */
+.status-banner {
+    padding    : 10px 30px;
+    font-weight: 600;
+    font-size  : 0.85rem;
+    display    : flex;
+    align-items: center;
+    gap        : 8px;
+}
+
+.status-banner.belum_bayar {
+    background   : #fff3cd;
+    color        : #856404;
+    border-bottom: 2px solid #ffc107;
+}
+
+.status-banner.sudah_bayar {
+    background   : #d1e7dd;
+    color        : #0a3622;
+    border-bottom: 2px solid #198754;
+}
+
+.status-banner.kadaluarsa {
+    background   : #f8d7da;
+    color        : #842029;
+    border-bottom: 2px solid #dc3545;
+}
+
+/* Body dokumen */
+.doc-body {
+    padding: 25px 30px;
+}
+
+/* Section title */
+.section-title {
+    font-size     : 0.75rem;
+    font-weight   : 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color         : #0d6efd;
+    border-bottom : 2px solid #0d6efd;
+    padding-bottom: 5px;
+    margin-bottom : 12px;
+}
+
+/* Info table */
+.info-table {
+    width        : 100%;
+    margin-bottom: 20px;
+}
+
+.info-table tr td {
+    padding       : 4px 8px;
+    vertical-align: top;
+}
+
+.info-table tr td:first-child {
+    width      : 170px;
+    color      : #555;
+    font-weight: 500;
+}
+
+.info-table tr td:nth-child(2) {
+    width: 10px;
+    color: #555;
+}
+
+.info-table tr td:last-child {
+    font-weight: 600;
+    color      : #111;
+}
+
+/* Tagihan box */
+.tagihan-box {
+    background   : #f8f9fa;
+    border       : 1px solid #dee2e6;
+    border-radius: 8px;
+    padding      : 20px;
+    margin-bottom: 20px;
+}
+
+.tagihan-box .rincian-row {
+    display        : flex;
+    justify-content: space-between;
+    padding        : 6px 0;
+    border-bottom  : 1px dashed #dee2e6;
+}
+
+.tagihan-box .rincian-row:last-child {
+    border-bottom: none;
+}
+
+.tagihan-box .total-row {
+    background     : #1a3a6c;
+    color          : white;
+    border-radius  : 6px;
+    padding        : 12px 15px;
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    margin-top     : 10px;
+    font-size      : 1.1rem;
+    font-weight    : 700;
+}
+
+/* Bank card */
+.bank-section {
+    margin-bottom: 20px;
+}
+
+.bank-card {
+    border       : 1px solid #dee2e6;
+    border-radius: 8px;
+    padding      : 12px 15px;
+    margin-bottom: 8px;
+    display      : flex;
+    align-items  : center;
+    gap          : 12px;
+}
+
+.bank-card .bank-logo {
+    width          : 50px;
+    height         : 50px;
+    border-radius  : 8px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    font-weight    : 700;
+    font-size      : 0.75rem;
+    color          : white;
+    flex-shrink    : 0;
+    text-align     : center;
+}
+
+.bank-card .bank-info .bank-name {
+    font-weight: 700;
+    font-size  : 0.9rem;
+    color      : #111;
+    margin     : 0;
+}
+
+.bank-card .bank-info .bank-rek {
+    font-size     : 1rem;
+    font-weight   : 600;
+    color         : #0d6efd;
+    letter-spacing: 1px;
+    margin        : 2px 0 0;
+}
+
+.bank-card .bank-info .bank-an {
+    font-size: 0.8rem;
+    color    : #666;
+    margin   : 0;
+}
+
+/* Instruksi box */
+.instruksi-box {
+    background   : #e8f4fd;
+    border       : 1px solid #bee3f8;
+    border-radius: 8px;
+    padding      : 15px;
+    margin-bottom: 20px;
+}
+
+.instruksi-box ol {
+    margin      : 0;
+    padding-left: 20px;
+}
+
+.instruksi-box ol li {
+    padding: 3px 0;
+    color  : #2c5f8a;
+}
+
+/* Barcode area */
+.barcode-area {
+    text-align   : center;
+    padding      : 15px;
+    background   : #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border       : 1px dashed #adb5bd;
+}
+
+.barcode-no {
+    font-family   : 'Courier New', monospace;
+    font-size     : 1.2rem;
+    font-weight   : 700;
+    letter-spacing: 3px;
+    color         : #1a3a6c;
+    display       : block;
+    margin-top    : 5px;
+}
+
+/* Jatuh tempo alert */
+.jatuh-tempo-alert {
+    border-radius: 8px;
+    padding      : 10px 15px;
+    margin-bottom: 20px;
+    display      : flex;
+    align-items  : center;
+    gap          : 10px;
+    font-weight  : 500;
+}
+
+/* Footer dokumen */
+.doc-footer {
+    background     : #1a3a6c;
+    color          : white;
+    padding        : 12px 30px;
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    font-size      : 0.75rem;
+    opacity        : 0.9;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+    .stats-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+
+    .dokumen {
+        margin: 0 10px 20px;
+    }
+
+    .doc-header {
+        padding: 15px;
+    }
+
+    .doc-header .d-flex {
+        flex-direction: column;
+        gap           : 10px;
+    }
+
+    .doc-header .doc-info {
+        text-align: left;
+    }
+
+    .doc-body {
+        padding: 15px;
+    }
+
+    .doc-footer {
+        flex-direction: column;
+        text-align    : center;
+        gap           : 5px;
+    }
+
+    .btn-wrapper {
+        flex-direction: column;
+        padding       : 0 15px;
+    }
+}
+
+/* =============================================
+   PRINT STYLES
+   ============================================= */
+@media print {
+    body {
+        background: white;
+        font-size : 11px;
+    }
+
+    /* Sembunyikan elemen tidak perlu */
+    .no-print,
+    .btn-wrapper,
+    .navbar,
+    footer,
+    .sidebar {
+        display: none !important;
+    }
+
+    /* Dokumen cetak */
+    .dokumen {
+        box-shadow: none;
+        margin    : 0;
+        max-width : 100%;
+    }
+
+    /* Pertahankan warna saat print */
+    .doc-header,
+    .status-banner,
+    .tagihan-box .total-row,
+    .doc-footer {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust         : exact;
+    }
+
+    .bank-card .bank-logo {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust         : exact;
+    }
+
+    /* Card tidak perlu shadow saat print */
+    .card {
+        box-shadow: none;
+        border    : 1px solid #ddd;
+    }
+}
